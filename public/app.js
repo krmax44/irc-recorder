@@ -16,17 +16,14 @@ const createMessageElement = message => {
   textEl.innerText = message.text;
 
   el.append(dateEl, fromEl, textEl);
+  messages.append(el);
   window.scroll(0, document.body.offsetHeight);
-  return el;
 };
 
 const getFirstMessages = async () => {
   const req = await fetch('/messages');
   const data = await req.json();
-  const messageElements = data.map(message => createMessageElement(message));
-  messages.append(...messageElements);
-
-  return true;
+  data.forEach(message => createMessageElement(message));
 };
 
 document.addEventListener('DOMContentLoaded', async () => {
@@ -35,6 +32,6 @@ document.addEventListener('DOMContentLoaded', async () => {
   const socket = new WebSocket('ws://localhost:8080/push');
   socket.onmessage = ({ data }) => {
     const message = JSON.parse(data);
-    messages.append(createMessageElement(message));
+    createMessageElement(message);
   };
 });

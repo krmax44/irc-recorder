@@ -42,10 +42,7 @@ app.get('/messages', (req, res) => {
   }
 });
 
-app.get('/info', (req, res) => {
-  console.log(client);
-  res.send('OK');
-});
+app.ws('/push', () => {});
 
 app.use(express.static('public'));
 app.listen(8080);
