@@ -1,0 +1,21 @@
+{
+  "name": "irc-recorder",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "author": {
+    "name": "krmax44",
+    "url": "https://krmax44.de"
+  },
+  "private": true,
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-ws": "^4.0.0",
+    "irc": "^0.5.2",
+    "lowdb": "^1.0.0",
+    "npm-size": "^1.2.0"
+  },
+  "scripts": {
+    "start": "node ./index.js"
+  }
+}
